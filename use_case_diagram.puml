@@ -1,0 +1,35 @@
+@startuml BookShop Use Case Diagram
+
+' Определение актеров
+actor "Пользователь" as User
+actor "Администратор" as Admin
+
+' Определение пакетов
+rectangle "BookShop" {
+    ' Основные функции для пользователя
+    usecase "Регистрация" as UC1
+    usecase "Просмотр каталога" as UC2
+    usecase "Оформление заказа" as UC3
+    usecase "Просмотр заказов" as UC4
+
+    ' Функции администратора
+    usecase "Управление книгами" as UC5
+    usecase "Управление заказами" as UC6
+    usecase "Управление пользователями" as UC7
+}
+
+' Связи пользователя с функциями
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+' Связи администратора с функциями
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+
+' Включения
+UC3 ..> UC2 : <<include>>
+
+@enduml 

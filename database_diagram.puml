@@ -1,0 +1,83 @@
+@startuml BookShop Database Diagram
+
+' Стиль для таблиц
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+
+entity "users" as users {
+    * id : int
+    --
+    * name : varchar(100)
+    * email : varchar(100)
+    * password : varchar(100)
+    user_type : varchar(20)
+    created_at : timestamp
+}
+
+entity "books" as books {
+    * book_id : int
+    --
+    * book_name : varchar(100)
+    * author_id : int
+    * category_id : int
+    * price : decimal(10,2)
+    * quantity : int
+    description : text
+    image : varchar(100)
+    discount : int
+}
+
+entity "categories" as categories {
+    * category_id : int
+    --
+    * category_name : varchar(100)
+}
+
+entity "authors" as authors {
+    * author_id : int
+    --
+    * author_name : varchar(100)
+    biography : text
+}
+
+entity "orders" as orders {
+    * order_id : int
+    --
+    * user_id : int
+    * total_price : decimal(10,2)
+    * status : varchar(50)
+    * created_at : timestamp
+    address : text
+    payment_method : varchar(50)
+}
+
+entity "order_details" as order_details {
+    * detail_id : int
+    --
+    * order_id : int
+    * book_id : int
+    * quantity : int
+    * price : decimal(10,2)
+}
+
+entity "shopping_cart" as cart {
+    * cart_id : int
+    --
+    * user_id : int
+    * book_id : int
+    * quantity : int
+}
+
+' Связи между таблицами
+users ||--o{ orders
+users ||--o{ cart
+books ||--o{ cart
+books ||--o{ order_details
+orders ||--|{ order_details
+books }|--|| categories
+books }|--|| authors
+
+@enduml 

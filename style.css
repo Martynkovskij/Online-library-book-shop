@@ -1,0 +1,191 @@
+/* Стили для секции новостей */
+.news {
+    background: var(--light-bg);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.news-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.news-content h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+.news-content p {
+    font-size: 1.1rem;
+    color: var(--light-color);
+    margin-bottom: 2rem;
+}
+
+.news-form {
+    display: flex;
+    gap: 1rem;
+}
+
+.news-form input[type="email"] {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Стили для секции "О нас" */
+.about {
+    padding: 4rem 2rem;
+}
+
+.about .flex {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about .image {
+    flex: 1;
+}
+
+.about .image img {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.about .content {
+    flex: 1;
+}
+
+.about .content h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+}
+
+.about .content p {
+    font-size: 1.1rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-radius: 0.5rem;
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.feature span {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--black);
+}
+
+/* Стили для секции новинок */
+.new-arrivals {
+    padding: 4rem 2rem;
+    background: var(--light-bg);
+}
+
+.new-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--main-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+.discount-price {
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.discount-badge {
+    background: var(--main-color);
+    color: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+}
+
+/* Стили для секции контактов */
+.home-contact {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.home-contact .content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-contact h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+}
+
+.home-contact p {
+    font-size: 1.1rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.contact-item span {
+    font-size: 1.1rem;
+    color: var(--black);
+} 

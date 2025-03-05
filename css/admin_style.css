@@ -1,0 +1,725 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+ 
+/* before any activity */
+*{
+   font-family: 'Rubik', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition:all .2s linear;
+}
+
+*::selection{
+   background-color: purple;
+   color:white;
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: rgb(13, 13, 13);
+}
+ /* Common css for all page */
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+}
+
+body{
+   background: url(../img/character-man-sitting-sofa-reading-book-3d-illustration_175994-17540.jpg),no-repeat;
+   background-size: cover;
+}
+
+section{
+   padding:3rem 2rem;
+}
+
+.title{
+   text-align: center;
+   margin-bottom: 2rem;
+   text-transform: uppercase;
+   color:black;
+   font-size: 4rem;
+}
+
+.empty{
+   padding:1.5rem;
+   text-align: center;
+   border:.2rem solid black;
+   background-color: white;
+   color:red;
+   font-size: 2rem;
+}
+
+.message{
+   position: sticky;
+   top:0;
+   margin:0 auto;
+   max-width: 1200px;
+   background-color: white;
+   padding:2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   z-index: 10000;
+   gap:1.5rem;
+}
+
+.message span{
+   font-size: 2rem;
+   color:black;
+}
+
+.message i{
+   cursor: pointer;
+   color:red;
+   font-size: 2.5rem;
+}
+
+.message i:hover{
+   transform: rotate(90deg);
+}
+
+.btn,
+.option-btn,
+.delete-btn,
+.white-btn{
+   display: inline-block;
+   margin-top: 1rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   color:white;
+   font-size: 1.8rem;
+   border-radius: .5rem;
+   text-transform: capitalize;
+}
+
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover{
+   background-color: black;
+}
+
+.white-btn,
+.btn{
+   background-color: rgb(255, 129, 51);
+}
+
+.option-btn{
+   background-color: rgb(255, 129, 51);
+}
+
+.delete-btn{
+   background-color: red;
+}
+
+.white-btn:hover{
+   background-color: white;
+   color:black;
+}
+
+@keyframes fadeIn {
+   0%{
+      transform: translateY(1rem);
+      opacity: .2s;
+   }
+}
+
+/* Header for all admin panel pages */
+.header{
+   position: sticky;
+   top:0; left:0; right:0;
+   z-index: 1000;
+   background-color: rgba(255, 255, 255, 0.95);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+.header .flex{
+   display: flex;
+   align-items: center;
+   padding:2rem;
+   justify-content: space-between;
+   position: relative;
+   max-width: 1200px;
+   margin:0 auto;
+}
+ 
+.header .flex .logo{
+   font-size: 2.5rem;
+   font-weight: 800;
+   color:black;
+}
+
+.header .flex .logo span{
+   color:rgb(254, 146, 5);
+}
+
+.header .flex .navbar a{
+   margin:0 1rem;
+   font-size: 2rem;
+   font-weight: 500;
+   color:rgb(0, 0, 0);
+}
+
+.header .flex .navbar a:hover{
+   color:rgb(254, 127, 0);
+}
+
+.header .flex .icons div{
+   margin-left: 1.5rem;
+   font-size: 2.5rem;
+   cursor: pointer;
+   color:black;
+}
+
+.header .flex .icons div:hover{
+   color:rgb(255, 103, 2);
+}
+
+.header .flex .account-box{
+   position: absolute;
+   top:120%; right:2rem;
+   width: 30rem;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border-radius: .5rem;
+   padding:2rem;
+   text-align: center;
+   border-radius: .5rem;
+   background-color: rgba(255, 255, 255, 0.95);
+   display: none;
+   animation:fadeIn .2s linear;
+}
+
+.header .flex .account-box.active{
+   display: inline-block;
+}
+
+.header .flex .account-box p{
+   font-size: 2rem;
+   color:var(black);
+   font-weight: bold;
+   margin-bottom: 1.5rem;
+}
+
+.header .flex .account-box p span{
+   color:rgb(42, 41, 41);
+   font-weight: lighter;
+}
+
+.header .flex .account-box .delete-btn{
+   margin-top: 0;
+}
+
+.header .flex .account-box div{
+   margin-top: 1.5rem;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.header .flex .account-box div a{
+   color:rgb(24, 16, 255);
+}
+
+.header .flex .account-box div a:hover{
+   text-decoration: underline;
+}
+
+#menu-btn{
+   display: none;
+}
+
+/* Admin panel dashboard */
+.dashboard .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;
+}
+.dashboard .title{
+   color: rgb(33, 33, 33);
+   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+.dashboard .box-container .box{
+   border-radius: .5rem;
+   padding:2rem;
+   background-color: rgba(255, 255, 255, 0.504);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   text-align: center;
+}
+.dashboard .box-container .box:hover{
+   border-radius: .5rem;
+   padding:2rem;
+   background-color: rgba(255, 255, 255, 0.647);
+   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.629);
+   border:.2rem solid rgb(133, 132, 132);
+   text-align: center;
+}
+
+.dashboard .box-container .box .icon img{
+   margin-right: 20rem;
+   height: 30px;
+   margin-bottom: 1rem;
+   
+}
+
+.dashboard .box-container .box h3{
+   font-size: 4rem;
+   color:black; 
+}
+
+.dashboard .box-container .box p{
+   color:rgb(10, 10, 10);
+   font-size: 2rem;
+   font-weight: bolder;
+}
+
+/* Admin panel product page form  for add books*/
+.add-products .title{
+   color: aliceblue;
+}
+
+.add-books form{
+   background-color:rgba(255, 255, 255, 0.647);
+   border-radius: .5rem;
+   padding:2rem;
+   text-align: center;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   max-width: 50rem;
+   max-height: 60rem;
+   margin:0 auto;
+}
+
+.add-books form h2{
+   font-size: 3rem;
+   text-transform: uppercase;
+   color:rgb(0, 0, 0);
+   margin-bottom: 1.5rem;
+   font-weight: bolder;
+}
+
+.add-books form .box{
+   width: 100%;
+   background-color: rgba(255, 250, 250, 0.753);
+   border-radius: .5rem;
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   color:black;
+   font-size: 1.8rem;
+   
+}
+.add-books form .cat{
+   width: 100%;
+   background-color: rgba(255, 250, 250, 0.753);
+   border-radius: .5rem;
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   color:black;
+   font-size: 1.8rem;
+}
+.add-books form .aut{
+   width: 100%;
+   background-color: rgba(255, 250, 250, 0.753);
+   border-radius: .5rem;
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   color:black;
+   font-size: 1.8rem;
+}
+
+
+
+
+
+/* admin panel product page */
+.show-books .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 30rem);
+   justify-content: center;
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;
+}
+
+.show-books{
+   padding-top: 0;
+}
+
+.show-books .box-container .box{
+   text-align: center;
+   padding:2rem;
+   border-radius: .5rem;
+   border:.2rem solid black;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   background-color: white;
+}
+
+.show-books .box-container .box img{
+   height: 30rem;
+}
+
+.show-books .box-container .box .name{
+   padding:1rem 0;
+   font-size: 2rem;
+   color:black;
+}
+
+.show-books .box-container .box .price{
+   padding:1rem 0;
+   font-size: 2.5rem;
+   color:red;
+}
+
+/* ADmin panel product page update form for books */
+.edit-books-form{
+   min-height: 100vh;
+   background-color: rgba(0,0,0,.7);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding:2rem;
+   overflow-y: scroll;
+   position: fixed;
+   top:0; left:0; 
+   z-index: 1200;
+   width: 100%;
+}
+
+.edit-books-form form{
+   width: 50rem;
+   height: 60rem;
+   padding:2rem;
+   text-align: center;
+   border-radius: .5rem;
+   background-color: rgba(255, 255, 255, 0.683);
+}
+
+.edit-books-form form img{
+   height: 15rem;
+   margin-bottom: 1rem;
+}
+
+.edit-books-form form .box{
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   /* border:.2rem solid rgb(190, 190, 190); */
+   border-radius: .5rem;
+   background-color: rgba(229, 229, 229, 0.875);
+   font-size: 1.8rem;
+   color:rgb(0, 0, 0);
+   width: 100%;
+   height: 5rem;
+}
+.edit-books-form form .cat{
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   /* border:.2rem solid rgb(190, 190, 190); */
+   border-radius: .5rem;
+   background-color: rgba(229, 229, 229, 0.875);
+   font-size: 1.8rem;
+   color:black;
+   width: 100%;
+}
+.edit-books-form form .aut{
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   /* border:.2rem solid rgb(190, 190, 190); */
+   border-radius: .5rem;
+   background-color: rgba(229, 229, 229, 0.875);
+   font-size: 1.8rem;
+   color:black;
+   width: 100%;
+}
+
+
+/* ADmin category update */
+.edit-books-form .cate{
+   height:100%;
+   width: 40%;
+}
+.edit-books-form .cat-box{
+   background: #faf9f9;
+   border-radius: 1rem;
+   height: 4rem;
+   font-size: 2rem;
+   align-items: center;
+   width:80%;
+}
+
+
+
+
+
+/* admin panel order page */
+.orders .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 30rem);
+   justify-content: center;
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;
+   
+}
+
+.orders .box-container .box{
+   background-color: rgba(255, 255, 255, 0.68);
+   padding:2rem;
+   /* border:.2rem solid black; */
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border-radius: 2rem;
+}
+.orders .box-container .box:hover{
+   background-color: rgba(255, 255, 255, 0.435);
+   padding:2rem;
+   /* border:.2rem solid black; */
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border-radius: 2rem;
+}
+
+.orders .box-container .box p{
+   padding-bottom: 1rem;
+   font-size: 2rem;
+   font-weight: 700;
+   color:black;
+}
+
+.orders .box-container .box p span{
+   font-weight: lighter;
+   color:rgb(255, 255, 255);
+}
+
+.orders .box-container .box form{
+   text-align: center;
+}
+
+.orders .box-container .box form select{
+   border-radius: .5rem;
+   margin:.5rem 0;
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.708);
+   /* border:.2rem solid black; */
+   padding:1.2rem 1.4rem;
+   font-size: 1.8rem;
+   color:black;
+}
+
+/* Admin panel users page */
+.users .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 30rem);
+   justify-content: center;
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;
+}
+
+.users .box-container .box{
+   background-color: rgba(255, 255, 255, 0.507);
+   padding:2rem;
+   border:.2rem solid rgb(143, 142, 142);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border-radius: .5rem;
+   text-align: center;
+}
+.users .box-container .box:hover{
+   background-color: rgba(255, 255, 255, 0.658);
+   padding:2rem;
+   border:.2rem solid rgb(143, 142, 142);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border-radius: .5rem;
+   text-align: center;
+}
+.users .box-container .box p{
+   padding-bottom: 1.5rem;
+   font-size: 2rem;
+   font-weight: 600;
+   color:black;
+}
+
+.users .box-container .box p span{
+   font-weight: lighter;
+   color:rgb(255, 255, 255);
+}
+
+.users .box-container .box .delete-btn{
+   margin-top: 0;
+}
+
+/* ADmin panel message page */
+.messages .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 35rem);
+   justify-content: center;
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;
+}
+
+.messages .box-container .box{
+   background-color: rgba(255, 255, 255, 0.606);
+   padding:2rem;
+   border:.2rem solid black;
+   /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); */
+   border-radius: .5rem;
+}
+.messages .box-container .box:hover{
+   background-color: rgba(255, 255, 255, 0.705);
+   padding:2rem;
+   border:.2rem solid black;
+   /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); */
+   border-radius: .5rem;
+}
+
+.messages .box-container .box p{
+   padding-bottom: 1.5rem;
+   font-size: 2rem;
+   font-weight: bolder;
+   color:var(--light-color);
+   line-height: 1.5;
+}
+
+.messages .box-container .box p span{
+   color:rgb(44, 42, 42);
+   font-weight: bolder;
+}
+
+.messages .box-container .box .delete-btn{
+   margin-top: 0;
+}
+
+/* category in admin page */
+
+.form-container form{
+   background-color:rgba(255, 255, 255, 0.647);
+   border-radius: 2rem;
+   padding:2rem;
+   text-align: center;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   max-width: 50rem;
+   margin:0 auto;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+}
+
+.form-container form .box{
+ width: 80%;  
+ height: 5rem;
+ border-radius: 1rem;
+}
+
+.form-container form h3{
+   padding:1rem 0;
+   font-size: 3rem;
+   color:black;
+}
+
+/* Show Category */
+.show-books{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+   gap:1.5rem;
+   max-width: 1200px;
+   margin:0 auto;
+   align-items: flex-start;   
+}
+.show-books .box-container .box{
+   border-radius: 2rem;
+   padding:2rem;
+   background-color: rgba(255, 255, 255, 0.504);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   text-align: center;
+   font-size: 1.5rem;
+   font-weight: bolder;
+}
+.show-books .box-container .box:hover{
+   border-radius: .5rem;
+   padding:2rem;
+   background-color: rgba(255, 255, 255, 0.633);
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   text-align: center;
+   font-size: 1.5rem;
+   font-weight: bolder;
+}
+
+
+/* update category  line no 411 */  
+/* .edit-category-form .cate-form {
+   background-color:rgba(255, 255, 255, 0.647);
+   border-radius: 2rem;
+   padding:2rem;
+   text-align: center;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   border:.2rem solid rgb(132, 132, 132);
+   max-width: 50rem;
+   margin:0 auto;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+} */
+
+
+/* media queries  */
+/* adjust page for different device screen */
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   #menu-btn{
+      display: inline-block;
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      top:99%; left:0; right:0;
+      background-color: white;
+      border-top: .2rem solid black;
+      border-bottom: .2rem solid black;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+   }
+
+   .header .flex .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   }
+
+   .header .flex .navbar a{
+      margin:2rem;
+      display: block;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+   .title{
+      font-size: 3rem;
+   }
+
+}
